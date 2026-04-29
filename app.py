@@ -1,51 +1,54 @@
-import streamlit as st
-# --- TUS CÓDIGOS DE META ---
-ID_PIXEL = "885240155980714"
-TOKEN_META = "EAAOhBgcrIZCABRTjghUKzQeYiDdzL1MoU3nrpPZCqSRUpPAkYlUiOOZBYaLtC0rIn35T25ZAyHmn47Q9dGx8oA0kFTDYy0QjtQzZACO2HVltVMa6wfmw9ZBRD5pZB418RBDwihmTZBOAbTtTZB8QZAIO5b48vSqVJikgHH4bbzr95XcIvcZBh3a2FiRQgMj2cGbqXyzaQZDZD"
+mport streamlit as st
 import pandas as pd
-import urllib.parse
 
-# --- CONFIGURACIÓN PRO ---
-st.set_page_config(page_title="Sistema Pro - Limpieza & Fumigación", layout="wide")
+st.set_page_config(page_title="Furniture Cleans - Cotizador", page_icon="🧼")
 
-st.title("🚀 Panel de Control de Ventas & Optimización")
+st.title("🚀 Panel de Control de Ventas")
 
-# --- LÓGICA DE FILTRO (Para Jessica) ---
+# Lista detallada de servicios basada en tus fotos
+servicios_dict = {
+    "--- Limpieza de Colchones ---": 0,
+    "Colchón Twin (1 plaza) - $25": 25,
+    "Colchón Full (2 plazas) - $35": 35,
+    "Colchón Queen - $45": 45,
+    "Colchón King - $55": 55,
+    "--- Limpieza de Sofás ---": 0,
+    "Sofá 1 Puesto - $15": 15,
+    "Sofá 2 Puestos - $30": 30,
+    "Sofá 3 Puestos - $45": 45,
+    "Sofá en L (Pequeño) - $60": 60,
+    "--- Sillas y Comedor ---": 0,
+    "Silla de Comedor (C/U) - $5": 5,
+    "Silla de Oficina - $10": 10,
+    "Poltrona - $20": 20,
+    "--- Alfombras ---": 0,
+    "Alfombra Pequeña - $20": 20,
+    "Alfombra Mediana - $40": 40,
+    "Alfombra Grande - $60": 60,
+    "--- Autos ---": 0,
+    "Sedán (Solo Asientos) - $40": 40,
+    "SUV (Solo Asientos) - $50": 50,
+    "Interior Completo - $80": 80,
+    "--- Otros Servicios ---": 0,
+    "Pulimiento de Pisos (Cotizar)": 0,
+    "Fumigación Básica - $35": 35,
+    "Fumigación Reforzada - $50": 50
+}
+
 with st.sidebar:
-    st.header("🎯 Filtro de Calidad")
-    zona = st.selectbox("Zona del Cliente", ["Panamá Centro", "San Miguelito", "Panamá Oeste", "Otros"])
-    presupuesto_estimado = st.number_input("Presupuesto del cliente ($)", min_value=0)
+    st.header("Datos del Servicio")
+    nombre = st.text_input("Nombre del Cliente")
+    whatsapp = st.text_input("WhatsApp (ej: 66778899)")
     
-    if st.button("Calificar Prospecto"):
-        if zona == "Otros" or presupuesto_estimado < 35:
-            st.error("⚠️ Prospecto de BAJA CALIDAD (No enviar a WhatsApp)")
-        else:
-            st.success("✅ Prospecto CALIFICADO (Proceder)")
+    opcion = st.selectbox("Seleccione el Servicio", list(servicios_dict.keys()))
+    precio_sugerido = servicios_dict[opcion]
+    
+    precio_final = st.number_input("Precio Final ($)", value=float(precio_sugerido))
 
-# --- GENERADOR DE COTIZACIÓN PROFESIONAL ---
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("📝 Datos del Servicio")
-    cliente = st.text_input("Nombre del Cliente")
-    tel = st.text_input("WhatsApp (ej: 66778899)")
-    servicio = st.selectbox("Servicio", ["Fumigación 24/7", "Limpieza Industrial", "Lavado de Sofás"])
-    monto = st.number_input("Precio Final ($)", min_value=0.0)
-
-with col2:
-    st.subheader("📊 Optimización de Meta (IA)")
-    enviar_a_meta = st.checkbox("Enviar conversión a Meta Ads", value=True)
-    st.info("Al marcar esto, el algoritmo de Facebook aprenderá que este cliente SÍ compró y buscará gente igual.")
-
-# --- BOTÓN DE CIERRE ---
 if st.button("FINALIZAR Y ENVIAR"):
-    # Lógica de WhatsApp
-    mensaje = f"Hola {cliente}, adjunto cotización por {servicio} de su empresa de confianza. Total: ${monto}"
-    link_wa = f"https://wa.me/507{tel}?text={urllib.parse.quote(mensaje)}"
-    
-    st.markdown(f'[📲 CLIC AQUÍ PARA ENVIAR WHATSAPP]({link_wa})', unsafe_allow_html=True)
-    
-    if enviar_a_meta:
-        # Aquí se activa la señal secreta para Meta
-        st.write("📡 Enviando señal de éxito a Meta Ads...")
-        # (Aquí conectamos tu Token de Meta en el siguiente paso)
+    if nombre and whatsapp:
+        link_wa = f"https://wa.me/507{whatsapp}?text=Hola%20{nombre},%20confirmamos%20tu%20servicio%20de%20{opcion}%20por%20${precio_final}"
+        st.markdown(f'[📲 CLIC AQUÍ PARA ENVIAR WHATSAPP]({link_wa})', unsafe_allow_html=True)
+        st.info("📡 Enviando señal de éxito a Meta Ads...")
+    else:
+        st.error("Por favor llena el nombre y el WhatsApp")
