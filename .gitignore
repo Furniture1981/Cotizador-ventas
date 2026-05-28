@@ -17,6 +17,7 @@ ruvector.db
 .claude-flow/daemon.pid
 .claude-flow/daemon-state.json
 .claude-flow/swarm/
+.claude-flow/metrics/
 .claude/memory.db
 
 # Logs y temporales
