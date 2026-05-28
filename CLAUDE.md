@@ -1,3 +1,61 @@
+# MAGNEX INTERNATIONAL — Contexto del Proyecto
+
+## Identidad Corporativa
+- **Empresa:** MAGNEX INTERNATIONAL
+- **CEO:** Miguel Angel González Remond
+- **Sede:** Panama City, República de Panamá
+- **Email:** mgonzalez@magnexinternational.com
+- **Teléfono:** +507 6593-3059
+- **Slogan:** "Connecting Markets. Delivering Trust."
+- **Modelo:** Broker/Intermediario sin inventario — comisiones vía LC + NCNDA/IMFPA
+
+## Productos MAGNEX (3 fases)
+| Producto | Estado | Comisión estimada | Plazo |
+|----------|--------|-------------------|-------|
+| Pintura Industrial | ✅ Activo — 25 emails enviados en Apollo | $800–$3,000/op | 30 días |
+| Aceite de Palma | ⏳ Fase 2 | $1,200–$6,000/op | 60 días |
+| Fertilizantes / Acero Estructural | ⏳ Fase 3 | $2,000–$8,000/op | 90 días |
+
+## Segundo Negocio
+- **Furniture Cleans Service** — limpieza de muebles, colchones, autos, alfombras (Panamá)
+
+## Herramientas Activas
+- **Apollo.io Pro** ($99/mes) — secuencias de email, búsqueda de leads
+- **Zoho Mail** (mgonzalez@magnexinternational.com) — email corporativo SMTP
+- **GitHub:** Furniture1981/Cotizador-ventas
+
+## Estructura de la App (Streamlit multipágina)
+- `app.py` — Dashboard principal con métricas
+- `pages/1_MAGNEX_B2B.py` — Cotizador B2B (FOB, incoterms, comisión, FCO)
+- `pages/2_Furniture_Cleans.py` — Cotizador con carrito y WhatsApp
+- `pages/3_CRM_Leads.py` — Pipeline de leads con estados
+- `pages/4_Automatizacion.py` — Envío de emails por lote via Zoho SMTP
+- `database.py` — SQLite unificado (cotizaciones, leads, emails)
+- `email_sender.py` — Módulo SMTP Zoho Mail
+
+## Credenciales (en .env — nunca en el repo)
+```
+ANTHROPIC_API_KEY=...
+ZOHO_EMAIL=mgonzalez@magnexinternational.com
+ZOHO_PASSWORD=...
+```
+
+## Tareas Pendientes
+- [ ] Agregar contraseña Zoho al .env y probar envío de emails
+- [ ] Cargar leads de Apollo al CRM (página 3)
+- [ ] Desplegar la app en la web (Streamlit Cloud)
+- [ ] Crear secuencia de Furniture Cleans en Apollo
+- [ ] LinkedIn personal de Miguel como CEO + página empresa MAGNEX
+- [ ] Campañas Meta Ads ($5/día a WhatsApp)
+
+## Reglas para Claude
+- Hablar SIEMPRE en español
+- Ahorrar tokens — respuestas cortas y directas
+- No crear archivos innecesarios
+- Hacer commit y push después de cada cambio
+
+---
+
 # Ruflo — Claude Code Configuration
 
 ## Rules
