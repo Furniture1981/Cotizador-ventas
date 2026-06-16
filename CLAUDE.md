@@ -19,10 +19,12 @@
 
 ### Apollo.io Pro ($99/mes)
 - Mailbox ID: 6a14d2271d3a61001c4d3b7d
-- Secuencia activa: "MAGNEX — Pintura Industrial PA/CR/CO/GT/RD" (ID: 6a277369cff2870014970d16)
+- **Secuencia MAGNEX Pintura Industrial** (ID: 6a277369cff2870014970d16)
   - 3 pasos: Día 0 / Día 4 / Día 7 — Auto email
-  - 25 contactos enrollados | 247 pendientes de cargar
+  - **38 contactos activos** | pendientes de cargar: resto
   - Variables: `{{first_name}}` y `{{company}}` (NO usar `{{organization.name}}`)
+- **Secuencia Furniture Cleans B2B** (ID: 6a28cf473d9ce200200fd649)
+  - **15 contactos activos**
 
 ### Productos (3 fases)
 | Producto | Estado | Comisión | Plazo |
@@ -64,13 +66,18 @@ ZOHO_PASSWORD=...
 - `email_sender.py` — SMTP smtppro.zoho.com
 
 ## Tareas Pendientes
-- [ ] Desplegar en Streamlit Cloud (share.streamlit.io)
-- [ ] ZOHO_PASSWORD en .env → probar envío emails
-- [ ] Cargar 247 leads restantes a Apollo (Pintura Industrial)
-- [ ] Conectar jdelcid@furniturecleans.com a Apollo + crear secuencia
+- [ ] Cargar siguiente tanda de leads MAGNEX Pintura Industrial en Apollo
+- [ ] Revisar actividad Apollo ambas secuencias (MAGNEX + Furniture Cleans)
 - [ ] LinkedIn Mike como CEO + página empresa MAGNEX
 - [ ] Meta Ads MAGNEX ($5/día → WhatsApp)
 - [ ] Secuencias Aceite de Palma y Fertilizantes (fases 2 y 3)
+
+## Completado
+- [x] App desplegada: https://cotizador-ventas.streamlit.app/
+- [x] Secuencia MAGNEX Pintura Industrial activa (38 contactos)
+- [x] Secuencia Furniture Cleans B2B activa (15 contactos)
+- [x] DNS magnexinternational.com OK (MX/SPF/DKIM/DMARC)
+- [x] Cotizador B2B + CRM + Automatización Zoho + integración Apollo
 
 ## Reglas para Claude
 - Siempre en español, directo, sin rodeos
