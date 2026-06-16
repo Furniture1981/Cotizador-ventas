@@ -1,4 +1,5 @@
 import smtplib
+import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -6,12 +7,24 @@ ZOHO_SMTP_HOST = "smtp.zoho.com"
 ZOHO_SMTP_PORT = 587
 
 
+def get_zoho_creds():
+    """Lee credenciales de Streamlit secrets o variables de entorno."""
+    try:
+        import streamlit as st
+        email = st.secrets.get("ZOHO_EMAIL", os.getenv("ZOHO_EMAIL", ""))
+        password = st.secrets.get("ZOHO_PASSWORD", os.getenv("ZOHO_PASSWORD", ""))
+    except Exception:
+        email = os.getenv("ZOHO_EMAIL", "")
+        password = os.getenv("ZOHO_PASSWORD", "")
+    return email, password
+
+
 def enviar_email(smtp_user: str, smtp_pass: str, destinatario: str,
                  asunto: str, cuerpo: str) -> tuple[bool, str]:
     try:
         msg = MIMEMultipart("alternative")
-        msg["From"]    = smtp_user
-        msg["To"]      = destinatario
+        msg["From"] = smtp_user
+        msg["To"] = destinatario
         msg["Subject"] = asunto
         msg.attach(MIMEText(cuerpo, "plain", "utf-8"))
 
