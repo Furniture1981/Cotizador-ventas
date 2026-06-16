@@ -3,7 +3,7 @@ import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-ZOHO_SMTP_HOST = "smtp.zoho.com"
+ZOHO_SMTP_HOST = "smtppro.zoho.com"
 ZOHO_SMTP_PORT = 587
 
 

@@ -1,58 +1,82 @@
-# MAGNEX INTERNATIONAL — Contexto del Proyecto
+# DOS NEGOCIOS — NUNCA MEZCLAR
 
-## Identidad Corporativa
-- **Empresa:** MAGNEX INTERNATIONAL
-- **CEO:** Miguel Angel González Remond
-- **Sede:** Panama City, República de Panamá
-- **Email:** mgonzalez@magnexinternational.com
-- **Teléfono:** +507 6593-3059
-- **Slogan:** "Connecting Markets. Delivering Trust."
-- **Modelo:** Broker/Intermediario sin inventario — comisiones vía LC + NCNDA/IMFPA
+| | FURNITURE CLEAN SERVICES | MAGNEX INTERNATIONAL |
+|---|---|---|
+| Tipo | Limpieza/fumigación, Panamá | Bróker commodities sin inventario |
+| Email | jdelcid@furniturecleans.com (Jessica) | mgonzalez@magnexinternational.com (Mike) |
+| WhatsApp | +507 6233-4632 | +507 6593-3059 |
 
-## Productos MAGNEX (3 fases)
-| Producto | Estado | Comisión estimada | Plazo |
-|----------|--------|-------------------|-------|
-| Pintura Industrial | ✅ Activo — 25 emails enviados en Apollo | $800–$3,000/op | 30 días |
-| Aceite de Palma | ⏳ Fase 2 | $1,200–$6,000/op | 60 días |
-| Fertilizantes / Acero Estructural | ⏳ Fase 3 | $2,000–$8,000/op | 90 días |
+## Mike (CEO)
+- Miguel Angel González Remond | mgonzalezremond@gmail.com | mrzeush2o@gmail.com
+- Directo, en español, sin repetir preguntas ya respondidas
 
-## Segundo Negocio
-- **Furniture Cleans Service** — limpieza de muebles, colchones, autos, alfombras (Panamá)
+## MAGNEX INTERNATIONAL
 
-## Herramientas Activas
-- **Apollo.io Pro** ($99/mes) — secuencias de email, búsqueda de leads
-- **Zoho Mail** (mgonzalez@magnexinternational.com) — email corporativo SMTP
-- **GitHub:** Furniture1981/Cotizador-ventas
+### Infraestructura ✅
+- Dominio: magnexinternational.com (Namecheap)
+- Email: mgonzalez@magnexinternational.com (Zoho Mail Lite $1/mes)
+- SMTP: smtppro.zoho.com | IMAP: imappro.zoho.com | DNS: MX+SPF+DKIM+DMARC ✅
 
-## Estructura de la App (Streamlit multipágina)
-- `app.py` — Dashboard principal con métricas
-- `pages/1_MAGNEX_B2B.py` — Cotizador B2B (FOB, incoterms, comisión, FCO)
-- `pages/2_Furniture_Cleans.py` — Cotizador con carrito y WhatsApp
-- `pages/3_CRM_Leads.py` — Pipeline de leads con estados
-- `pages/4_Automatizacion.py` — Envío de emails por lote via Zoho SMTP
-- `database.py` — SQLite unificado (cotizaciones, leads, emails)
-- `email_sender.py` — Módulo SMTP Zoho Mail
+### Apollo.io Pro ($99/mes)
+- Mailbox ID: 6a14d2271d3a61001c4d3b7d
+- Secuencia activa: "MAGNEX — Pintura Industrial PA/CR/CO/GT/RD" (ID: 6a277369cff2870014970d16)
+  - 3 pasos: Día 0 / Día 4 / Día 7 — Auto email
+  - 25 contactos enrollados | 247 pendientes de cargar
+  - Variables: `{{first_name}}` y `{{company}}` (NO usar `{{organization.name}}`)
 
-## Credenciales (en .env — nunca en el repo)
+### Productos (3 fases)
+| Producto | Estado | Comisión | Plazo |
+|---|---|---|---|
+| Pintura Industrial | ✅ Secuencia activa | $800–$3,000 | 30 días |
+| Aceite de Palma | ⏳ Fase 2 | $1,200–$6,000 | 60 días |
+| Fertilizantes/Acero | ⏳ Fase 3 | $2,000–$8,000 | 90 días |
+
+### Proveedores Pintura Industrial (Alibaba FOB)
+- Foshan Brightsun: $2.00–2.60/kg, MOQ 10kg
+- Foshan Nanhai Huaren: $8.99–9.99/kg, MOQ 20kg (astilleros)
+- Shanghai Cloud: $15–45/kg, MOQ 2kg (premium)
+
+### Protocolo de cierre
+1. Calificar volumen/frecuencia → 2. Firmar NCNDA → 3. Proveedor Alibaba FOB
+4. Sumar 3% comisión → 5. Emitir FCO → 6. Buyer abre LC irrevocable UCP 600
+
+## FURNITURE CLEAN SERVICES
+- Meta Ads: act_735269780152091 | Pixel: 885240155980714 | $7/día
+- Make.com: escenario ID 5135275 → lead → email automático a Jessica c/15 min
+- WhatsApp Business Premium: +507 6233-4632 ($18/mes)
+- ❌ Buzón Apollo jdelcid@furniturecleans.com NO conectado aún
+
+## Credenciales (en .env local — nunca en el repo)
 ```
+APOLLO_API_KEY=...
 ANTHROPIC_API_KEY=...
 ZOHO_EMAIL=mgonzalez@magnexinternational.com
 ZOHO_PASSWORD=...
 ```
 
+## App Streamlit (este repo)
+- `app.py` — Dashboard principal
+- `pages/1_MAGNEX_B2B.py` — Cotizador B2B con FCO
+- `pages/2_Furniture_Cleans.py` — Cotizador + WhatsApp
+- `pages/3_CRM_Leads.py` — CRM + importación CSV Apollo
+- `pages/4_Automatizacion.py` — Envío emails Zoho por lote
+- `database.py` — SQLite unificado
+- `email_sender.py` — SMTP smtppro.zoho.com
+
 ## Tareas Pendientes
-- [ ] Agregar contraseña Zoho al .env y probar envío de emails
-- [ ] Cargar leads de Apollo al CRM (página 3)
-- [ ] Desplegar la app en la web (Streamlit Cloud)
-- [ ] Crear secuencia de Furniture Cleans en Apollo
-- [ ] LinkedIn personal de Miguel como CEO + página empresa MAGNEX
-- [ ] Campañas Meta Ads ($5/día a WhatsApp)
+- [ ] Desplegar en Streamlit Cloud (share.streamlit.io)
+- [ ] ZOHO_PASSWORD en .env → probar envío emails
+- [ ] Cargar 247 leads restantes a Apollo (Pintura Industrial)
+- [ ] Conectar jdelcid@furniturecleans.com a Apollo + crear secuencia
+- [ ] LinkedIn Mike como CEO + página empresa MAGNEX
+- [ ] Meta Ads MAGNEX ($5/día → WhatsApp)
+- [ ] Secuencias Aceite de Palma y Fertilizantes (fases 2 y 3)
 
 ## Reglas para Claude
-- Hablar SIEMPRE en español
-- Ahorrar tokens — respuestas cortas y directas
+- Siempre en español, directo, sin rodeos
+- Ahorrar tokens — respuestas cortas
 - No crear archivos innecesarios
-- Hacer commit y push después de cada cambio
+- Commit y push después de cada cambio
 
 ---
 
